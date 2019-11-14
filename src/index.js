@@ -1,12 +1,38 @@
+// o index.js é um arquivo de configuração de rotas
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import {Route, BrowserRouter as Router, Switch} from 'react-router-dom';
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
+import Categoria from './pages/Categoria';
+import NotFound from './pages/NotFound';
+import Login from './pages/Login';
+import Usuarios from './pages/Usuarios';
+import Eventos from './pages/Eventos';
+
+const Rotas = (
+    <Router>
+
+        <div>
+        <Switch>
+        <Route exact path = '/' component={App}/> 
+        <Route path='/Categoria' component = {Categoria}/>
+        <Route path='/Login' component = {Login}/>
+        <Route path='/Usuarios' component = {Usuarios}/>
+        <Route path='/Eventos' component = {Eventos}/>
+        <Route component={NotFound}/>
+        </Switch>
+        </div>
+    </Router>
+)
+
+
+ReactDOM.render(Rotas, document.getElementById('root'));
+
+// ReactDOM.render(<App />, document.getElementById('root'));
+
 serviceWorker.unregister();
